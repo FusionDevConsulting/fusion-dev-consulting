@@ -1272,8 +1272,8 @@ footer {
 
 .footer-logo img,
 .footer-brand img {
-    width: 150px;
-    height: auto;
+    width: auto;
+    height: 70px;
 }
 
 .footer-links,
