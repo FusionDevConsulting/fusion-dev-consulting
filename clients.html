@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clients & Case Studies | Fusion Dev Consulting</title>
+    <link rel="stylesheet" href="style-premium.css">
+    <!-- Add in <head> -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', var(--font-body);
+        }
+    </style>
+    <style>
+        .clients-intro {
+            padding: 80px 5%;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(26,86,219,0.03) 0%, rgba(124,58,237,0.03) 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+            .clients-intro h2 {
+                font-size: 2.4rem;
+                font-weight: 800;
+                margin-bottom: 1rem;
+                line-height: 1.2;
+            }
+
+            .clients-intro p {
+                font-size: 1.1rem;
+                color: var(--muted);
+                max-width: 700px;
+                margin: 0 auto;
+                line-height: 1.8;
+            }
+
+        .clients-logo-grid {
+            padding: 60px 5%;
+            background: var(--bg2);
+            border-bottom: 1px solid var(--border);
+        }
+
+            .clients-logo-grid h3 {
+                text-align: center;
+                font-size: 0.9rem;
+                font-weight: 700;
+                color: var(--dim);
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                margin-bottom: 3rem;
+            }
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+        }
+
+        .client-logo {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 120px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+            .client-logo:hover {
+                border-color: var(--accent);
+                box-shadow: 0 8px 16px rgba(26,86,219,0.1);
+                transform: translateY(-4px);
+            }
+
+        .client-logo-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .client-logo-type {
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 0.5rem;
+        }
+
+        .case-studies {
+            padding: 80px 5%;
+            background: var(--bg);
+        }
+
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .case-study {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+            .case-study:hover {
+                transform: translateY(-8px);
+                box-shadow: var(--shadow-lg);
+                border-color: rgba(26,86,219,0.2);
+            }
+
+        .case-study-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(26,86,219,0.1) 0%, rgba(124,58,237,0.1) 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .case-study-client {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .case-study-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .case-study-industry {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .case-study-body {
+            padding: 2rem;
+        }
+
+        .case-study-problem {
+            margin-bottom: 1.5rem;
+        }
+
+            .case-study-problem h4 {
+                font-size: 0.9rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                color: var(--accent);
+                margin-bottom: 0.5rem;
+            }
+
+            .case-study-problem p {
+                font-size: 0.9rem;
+                color: var(--muted);
+                line-height: 1.6;
+            }
+
+        .case-study-solution {
+            margin-bottom: 1.5rem;
+        }
+
+            .case-study-solution h4 {
+                font-size: 0.9rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                color: var(--accent2);
+                margin-bottom: 0.5rem;
+            }
+
+            .case-study-solution p {
+                font-size: 0.9rem;
+                color: var(--muted);
+                line-height: 1.6;
+            }
+
+        .case-study-results {
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+            .case-study-results h4 {
+                font-size: 0.9rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                color: var(--success);
+                margin-bottom: 1rem;
+            }
+
+        .results-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .result-item {
+            display: flex;
+            gap: 0.8rem;
+            align-items: flex-start;
+            font-size: 0.85rem;
+        }
+
+            .result-item::before {
+                content: '✓';
+                color: var(--success);
+                font-weight: 700;
+                min-width: 16px;
+            }
+
+            .result-item span {
+                color: var(--text);
+                font-weight: 600;
+            }
+
+            .result-item p {
+                color: var(--muted);
+                flex-grow: 1;
+            }
+
+        .testimonials-section {
+            padding: 80px 5%;
+            background: linear-gradient(135deg, rgba(26,86,219,0.03) 0%, rgba(124,58,237,0.03) 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+            .testimonial:hover {
+                box-shadow: var(--shadow);
+                border-color: rgba(26,86,219,0.2);
+            }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 0.2rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-author-info h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .testimonial-author-info p {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .industries-section {
+            padding: 80px 5%;
+            background: var(--bg);
+        }
+
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .industry-item {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+            .industry-item:hover {
+                border-color: var(--accent);
+                box-shadow: 0 8px 16px rgba(26,86,219,0.1);
+            }
+
+        .industry-icon {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .industry-item h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .industry-item p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        @media(max-width:1024px) {
+            .case-studies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .industries-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .logo-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media(max-width:768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .industries-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><img src="Images/Logo.png" alt="Fusion Dev"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="clients.html">Clients</a></li>
+    <li><a href="https://www.fusiondevconsulting.ai/">Blog</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+
+<div class="page-hero">
+  <span class="page-hero-label">Clients</span>
+  <h1>Trusted by Leading Organizations</h1>
+  <p>We've helped 50+ organizations across industries transform their operations with intelligent solutions, modern platforms, and strategic consulting.</p>
+</div>
+
+
+
+
+<!-- CASE STUDIES -->
+<section class="case-studies">
+  <div class="container">
+    <div class="section-label" style="margin-bottom: 1rem;">Success Stories</div>
+    <h2 class="section-title">Featured Case Studies</h2>
+
+    <div class="case-studies-grid">
+
+      <div class="case-study reveal">
+        <div class="case-study-header">
+          <div class="case-study-client">Financial Services</div>
+          <div class="case-study-title">Process Automation at Scale</div>
+          <div class="case-study-industry">Banking & Finance</div>
+        </div>
+        <div class="case-study-body">
+          <div class="case-study-problem">
+            <h4>Challenge</h4>
+            <p>Manual loan processing took 5+ days per application. High error rates and seasonal backlogs cost £2M+ annually.</p>
+          </div>
+          <div class="case-study-solution">
+            <h4>Solution</h4>
+            <p>Deployed 8 Power Automate flows with OCR and document intelligence to automate 90% of the loan workflow.</p>
+          </div>
+          <div class="case-study-results">
+            <h4>Results</h4>
+            <div class="results-list">
+              <div class="result-item"><span>3 days</span><p>Reduced processing time</p></div>
+              <div class="result-item"><span>£1.8M</span><p>Annual savings achieved</p></div>
+              <div class="result-item"><span>99%</span><p>Accuracy improvement</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-study reveal">
+        <div class="case-study-header">
+          <div class="case-study-client">Healthcare Network</div>
+          <div class="case-study-title">Modern Intranet & Knowledge Hub</div>
+          <div class="case-study-industry">Healthcare</div>
+        </div>
+        <div class="case-study-body">
+          <div class="case-study-problem">
+            <h4>Challenge</h4>
+            <p>4,000+ employees scattered across 50+ facilities with no centralized knowledge hub. Onboarding took weeks.</p>
+          </div>
+          <div class="case-study-solution">
+            <h4>Solution</h4>
+            <p>Built modern intranet with SharePoint and implemented AI-powered knowledge search with semantic indexing.</p>
+          </div>
+          <div class="case-study-results">
+            <h4>Results</h4>
+            <div class="results-list">
+              <div class="result-item"><span>60%</span><p>Faster employee onboarding</p></div>
+              <div class="result-item"><span>8,000+</span><p>Monthly knowledge base searches</p></div>
+              <div class="result-item"><span>85%</span><p>Engagement in first month</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-study reveal">
+        <div class="case-study-header">
+          <div class="case-study-client">Manufacturing Co.</div>
+          <div class="case-study-title">RPA Migration & Cost Reduction</div>
+          <div class="case-study-industry">Manufacturing</div>
+        </div>
+        <div class="case-study-body">
+          <div class="case-study-problem">
+            <h4>Challenge</h4>
+            <p>12 legacy RPA bots from UiPath running on expensive licenses with high maintenance overhead.</p>
+          </div>
+          <div class="case-study-solution">
+            <h4>Solution</h4>
+            <p>Migrated all 12 bots to Power Automate with improved performance and integrated with Power Platform ecosystem.</p>
+          </div>
+          <div class="case-study-results">
+            <h4>Results</h4>
+            <div class="results-list">
+              <div class="result-item"><span>£300k</span><p>Annual licensing savings</p></div>
+              <div class="result-item"><span>50%</span><p>Maintenance cost reduction</p></div>
+              <div class="result-item"><span>30%</span><p>Bot performance improvement</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-study reveal">
+        <div class="case-study-header">
+          <div class="case-study-client">Professional Services</div>
+          <div class="case-study-title">AI Agent for Client Support</div>
+          <div class="case-study-industry">Consulting</div>
+        </div>
+        <div class="case-study-body">
+          <div class="case-study-problem">
+            <h4>Challenge</h4>
+            <p>Support team overwhelmed with 500+ queries daily. Turnaround was 48+ hours for routine questions.</p>
+          </div>
+          <div class="case-study-solution">
+            <h4>Solution</h4>
+            <p>Built AI-powered chatbot with Copilot Studio, integrated with knowledge base and enterprise systems.</p>
+          </div>
+          <div class="case-study-results">
+            <h4>Results</h4>
+            <div class="results-list">
+              <div class="result-item"><span>70%</span><p>Queries resolved without human intervention</p></div>
+              <div class="result-item"><span>2 mins</span><p>Average response time</p></div>
+              <div class="result-item"><span>92%</span><p>Customer satisfaction score</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-label" style="margin-bottom: 1rem;">What Clients Say</div>
+    <h2 class="section-title">Testimonials</h2>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial reveal">
+        <div class="testimonial-stars">5.0 / 5</div>
+        <div class="testimonial-text">"Fusion Dev delivered our intranet project on time and on budget. Their SharePoint expertise is exceptional, and they're genuinely interested in our long-term success."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">JM</div>
+          <div class="testimonial-author-info">
+            <h4>James Mitchell</h4>
+            <p>IT Director, Healthcare</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial reveal">
+        <div class="testimonial-stars">5.0 / 5</div>
+        <div class="testimonial-text">"The automation solutions they built saved us £2M annually. What impressed me most was their transparent approach and willingness to explain everything."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">CP</div>
+          <div class="testimonial-author-info">
+            <h4>Catherine Price</h4>
+            <p>CFO, Financial Services</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial reveal">
+        <div class="testimonial-stars">5.0 / 5</div>
+        <div class="testimonial-text">"Direct access to senior consultants was invaluable. No junior staff, no lengthy approval processes — just experienced professionals solving real problems."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">RK</div>
+          <div class="testimonial-author-info">
+            <h4>Rajesh Kumar</h4>
+            <p>CTO, Tech Startup</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="industries-section">
+  <div class="container">
+    <div class="section-label" style="margin-bottom: 1rem;">Industry Expertise</div>
+    <h2 class="section-title">Industries We Serve</h2>
+
+    <div class="industries-grid">
+      <div class="industry-item reveal">
+        <div class="industry-icon" data-icon="finance"></div>
+        <h3>Financial Services</h3>
+        <p>Banking, insurance, and fintech solutions with focus on compliance and risk management.</p>
+      </div>
+      <div class="industry-item reveal">
+        <div class="industry-icon" data-icon="healthcare"></div>
+        <h3>Healthcare</h3>
+        <p>Patient management, research collaboration, and operational automation.</p>
+      </div>
+      <div class="industry-item reveal">
+        <div class="industry-icon" data-icon="manufacturing"></div>
+        <h3>Manufacturing</h3>
+        <p>Supply chain automation, production scheduling, and quality management.</p>
+      </div>
+      <div class="industry-item reveal">
+        <div class="industry-icon" data-icon="retail"></div>
+        <h3>Retail</h3>
+        <p>E-commerce, inventory management, and customer engagement platforms.</p>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding: 80px 5%; text-align: center; background: linear-gradient(135deg, rgba(26,86,219,0.03) 0%, rgba(124,58,237,0.03) 100%);">
+  <div class="reveal">
+    <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">Ready to Become a Success Story?</h2>
+    <p style="font-size: 1.1rem; color: var(--muted); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Let's explore how we can drive transformation at your organization.</p>
+    <a href="contact.html" class="btn-primary">Start Your Project →</a>
+  </div>
+</section>
+
+<footer>
+    <div class="footer-container">
+        <!-- Logo Section -->
+        <div class="footer-section">
+            <a href="#" class="footer-logo">
+                <img src="Images/Logo.png" alt="Fusion Dev">
+            </a>
+            <p>Building premium digital experiences with cutting-edge technology and innovative design.</p>
+            <div class="footer-social">
+                <a href="#" title="Twitter">𝕏</a>
+                <a href="#" title="LinkedIn">in</a>
+                <a href="#" title="GitHub">GH</a>
+                <a href="#" title="Facebook">f</a>
+            </div>
+        </div>
+
+        <!-- Product Section -->
+        <div class="footer-section">
+            <h3>Product</h3>
+            <ul class="footer-links">
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Security</a></li>
+                <li><a href="#">Roadmap</a></li>
+            </ul>
+        </div>
+
+        <!-- Company Section -->
+        <div class="footer-section">
+            <h3>Company</h3>
+            <ul class="footer-links">
+                <li><a href="#">About</a></li>
+                <li><a href="https://www.fusiondevconsulting.ai/">Blog</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Resources Section -->
+        <div class="footer-section">
+            <h3>Resources</h3>
+            <ul class="footer-links">
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">API Reference</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <div class="footer-copyright">
+            © 2026 Fusion Dev Consulting. All rights reserved.
+        </div>
+        <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+        </div>
+    </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

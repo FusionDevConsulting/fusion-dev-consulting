@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Fusion Dev Consulting</title>
+    <link rel="stylesheet" href="style-premium.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', var(--font-body);
+  }
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .service-detail {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+            .service-detail:hover {
+                transform: translateY(-8px);
+                box-shadow: var(--shadow-lg);
+                border-color: rgba(26,86,219,0.2);
+            }
+
+        .service-icon-lg {
+            margin-bottom: 1.5rem;
+        }
+
+        .service-detail h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .service-detail p {
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .service-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+
+            .service-features li {
+                display: flex;
+                gap: 0.8rem;
+                align-items: flex-start;
+                font-size: 0.95rem;
+                color: var(--text);
+            }
+
+                .service-features li::before {
+                    content: '✓';
+                    color: var(--accent);
+                    font-weight: 700;
+                    min-width: 20px;
+                }
+
+        .use-cases {
+            background: var(--bg2);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+            .use-cases h4 {
+                font-size: 0.9rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                margin-bottom: 1rem;
+                color: var(--accent);
+            }
+
+        .use-case-item {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 0.6rem;
+            display: flex;
+            gap: 0.6rem;
+        }
+
+            .use-case-item::before {
+                content: '→';
+                color: var(--accent);
+                font-weight: 600;
+            }
+
+        .why-section {
+            background: linear-gradient(135deg, rgba(26,86,219,0.03) 0%, rgba(124,58,237,0.03) 100%);
+            border-radius: var(--radius);
+            padding: 4rem 3rem;
+            margin-top: 6rem;
+            text-align: center;
+        }
+
+            .why-section h2 {
+                font-size: 2.2rem;
+                font-weight: 800;
+                margin-bottom: 2rem;
+            }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .why-item {
+            text-align: center;
+        }
+
+        .why-item-icon {
+            margin: 10px auto 1rem;
+        }
+
+        .why-item h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.7rem;
+        }
+
+        .why-item p {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+            .cta-section h2 {
+                font-size: 2rem;
+                font-weight: 800;
+                margin-bottom: 1rem;
+            }
+
+            .cta-section p {
+                font-size: 1.1rem;
+                color: var(--muted);
+                margin-bottom: 2rem;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        @media(max-width:1024px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media(max-width:768px) {
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-detail {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><img src="Images/Logo.png" alt="Fusion Dev"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="clients.html">Clients</a></li>
+    <li><a href="https://www.fusiondevconsulting.ai/">Blog</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+
+<div class="page-hero">
+  <span class="page-hero-label">Services</span>
+  <h1>Complete Solutions for Digital Transformation</h1>
+  <p>From strategy to delivery, we offer comprehensive services across Microsoft 365, SharePoint, Power Platform, and intelligent automation. Whatever your challenge, we have the expertise to solve it.</p>
+</div>
+
+<!-- SERVICES GRID -->
+<section style="padding: 80px 5%; background: var(--bg);">
+  <div class="container">
+    <div class="services-grid">
+
+      <!-- Service 1: Microsoft 365 -->
+      <div class="service-detail reveal" id="m365">
+        <div class="service-icon-lg" data-icon="cloud"></div>
+        <h3>Microsoft 365 Solutions</h3>
+        <p>Unlock the full potential of Microsoft 365 with modern workplace collaboration, productivity, and governance strategies tailored to your organization.</p>
+        <ul class="service-features">
+          <li>Collaboration & Communication Strategy</li>
+          <li>Teams, OneDrive & Stream Optimization</li>
+          <li>Modern Workplace Design</li>
+          <li>Governance & Security Framework</li>
+          <li>Migration & Deployment Planning</li>
+          <li>User Adoption & Training</li>
+        </ul>
+        <div class="use-cases">
+          <h4>Common Use Cases</h4>
+          <div class="use-case-item">Workplace modernization and hybrid work enablement</div>
+          <div class="use-case-item">Enterprise collaboration platform deployment</div>
+          <div class="use-case-item">Productivity optimization across teams</div>
+          <div class="use-case-item">Governance and compliance implementation</div>
+        </div>
+      </div>
+
+      <!-- Service 2: SharePoint Services -->
+      <div class="service-detail reveal" id="sharepoint">
+        <div class="service-icon-lg" data-icon="sharepoint"></div>
+        <h3>SharePoint Services</h3>
+        <p>Build modern intranets, document management systems, and knowledge repositories with SharePoint. Expert guidance from strategy through deployment.</p>
+        <ul class="service-features">
+          <li>Intranet Architecture & Design</li>
+          <li>Document Management Solutions</li>
+          <li>Custom SPFx Solutions</li>
+          <li>SharePoint Framework Development</li>
+          <li>Search & Discovery Optimization</li>
+          <li>Migration from Legacy Systems</li>
+        </ul>
+        <div class="use-cases">
+          <h4>Common Use Cases</h4>
+          <div class="use-case-item">Enterprise intranet modernization</div>
+          <div class="use-case-item">Records management and retention policies</div>
+          <div class="use-case-item">Custom web parts and extensions</div>
+          <div class="use-case-item">Content migration from on-premises</div>
+        </div>
+      </div>
+
+      <!-- Service 3: Power Platform -->
+      <div class="service-detail reveal" id="powerplatform">
+        <div class="service-icon-lg" data-icon="apps"></div>
+        <h3>Power Platform Services</h3>
+        <p>Rapidly build, deploy, and scale business applications with Power Apps, Power Automate, and Power BI. Expert governance and architecture guidance included.</p>
+        <ul class="service-features">
+          <li>Power Apps Development (Canvas & Model-driven)</li>
+          <li>Power Automate Flow Design</li>
+          <li>Power BI Dashboards & Analytics</li>
+          <li>Power Automate Process Advisor</li>
+          <li>Custom Connectors & API Integration</li>
+          <li>Center of Excellence Setup</li>
+        </ul>
+        <div class="use-cases">
+          <h4>Common Use Cases</h4>
+          <div class="use-case-item">Line-of-business application development</div>
+          <div class="use-case-item">Business process automation</div>
+          <div class="use-case-item">Enterprise analytics and reporting</div>
+          <div class="use-case-item">Citizen developer enablement</div>
+        </div>
+      </div>
+
+      <!-- Service 4: Power Automate RPA -->
+      <div class="service-detail reveal" id="rpa">
+        <div class="service-icon-lg" data-icon="automate"></div>
+        <h3>Power Automate RPA</h3>
+        <p>Automate repetitive, high-volume business processes with Power Automate desktop flows. Reduce costs and free up your team for strategic work.</p>
+        <ul class="service-features">
+          <li>Desktop Flow (RPA) Development</li>
+          <li>Legacy System Integration</li>
+          <li>OCR & Document Processing</li>
+          <li>Attended & Unattended Automation</li>
+          <li>Bot Monitoring & Maintenance</li>
+          <li>ROI Analysis & Optimization</li>
+        </ul>
+        <div class="use-cases">
+          <h4>Common Use Cases</h4>
+          <div class="use-case-item">High-volume data entry automation</div>
+          <div class="use-case-item">Legacy system integration without APIs</div>
+          <div class="use-case-item">Document processing and extraction</div>
+          <div class="use-case-item">Cross-application workflow automation</div>
+        </div>
+      </div>
+
+      <!-- Service 5: Bot & Agent Development -->
+      <div class="service-detail reveal" id="agents">
+        <div class="service-icon-lg" data-icon="ai"></div>
+        <h3>AI Agents & Bot Development</h3>
+        <p>Deploy intelligent agents and conversational bots powered by OpenAI and Microsoft technologies. Create next-generation customer and employee experiences.</p>
+        <ul class="service-features">
+          <li>Copilot Studio Bot Development</li>
+          <li>OpenAI Integration & Plugins</li>
+          <li>Semantic Search & RAG Implementations</li>
+          <li>Generative AI Workflows</li>
+          <li>Teams & Copilot Integration</li>
+          <li>AI Governance & Safety Frameworks</li>
+        </ul>
+        <div class="use-cases">
+          <h4>Common Use Cases</h4>
+          <div class="use-case-item">Customer service chatbots and support bots</div>
+          <div class="use-case-item">Employee assistant and HR chatbots</div>
+          <div class="use-case-item">Document intelligence with Copilot</div>
+          <div class="use-case-item">Knowledge base Q&A systems</div>
+        </div>
+      </div>
+
+      <!-- Service 6: Classic RPA Migration -->
+      <div class="service-detail reveal" id="migration">
+        <div class="service-icon-lg" data-icon="migration"></div>
+        <h3>Classic RPA to Power Automate Migration</h3>
+        <p>Migrate legacy RPA bots from UiPath, Blue Prism, or Automation Anywhere to Microsoft Power Automate. Reduce licensing costs and simplify operations.</p>
+        <ul class="service-features">
+          <li>Legacy Bot Assessment & Audit</li>
+          <li>Migration Planning & Roadmapping</li>
+          <li>Desktop Flow Conversion & Rewrite</li>
+          <li>Performance Optimization</li>
+          <li>Testing & Validation</li>
+          <li>Decommissioning & Transition Support</li>
+        </ul>
+        <div class="use-cases">
+          <h4>Common Use Cases</h4>
+          <div class="use-case-item">UiPath to Power Automate migration</div>
+          <div class="use-case-item">Blue Prism to Power Automate transition</div>
+          <div class="use-case-item">Licensing cost reduction</div>
+          <div class="use-case-item">Consolidation of multiple RPA platforms</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why-section reveal">
+  <h2>Why Choose Fusion Dev for Your Services?</h2>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-item-icon" data-icon="impact"></div>
+      <h3>Specialized Expertise</h3>
+      <p>Deep experience across all Microsoft 365 and Power Platform technologies with proven delivery track record.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-item-icon" data-icon="speed"></div>
+      <h3>Fast Implementation</h3>
+      <p>Two-consultant agile model means quicker decisions, direct accountability, and rapid delivery without committee overhead.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-item-icon" data-icon="best"></div>
+      <h3>Best Practices</h3>
+      <p>We follow Microsoft recommended patterns, governance frameworks, and industry best practices in every engagement.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-item-icon" data-icon="trust"></div>
+      <h3>Secure & Compliant</h3>
+      <p>Security, data governance, and compliance built into every solution from the ground up.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-item-icon" data-icon="analytics"></div>
+      <h3>ROI Focused</h3>
+      <p>We measure success by your business outcomes. Clear ROI targets and transparent reporting in every project.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-item-icon" data-icon="innovation"></div>
+      <h3>Innovation Ready</h3>
+      <p>Always up-to-date with latest Microsoft releases, AI capabilities, and emerging technologies.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section reveal">
+  <h2>Ready to Transform Your Business?</h2>
+  <p>Let's discuss which services are the best fit for your organization. Book a free consultation with our team.</p>
+  <a href="contact.html" class="btn-primary">Schedule a Discovery Call →</a>
+</section>
+
+<footer>
+    <div class="footer-container">
+        <!-- Logo Section -->
+        <div class="footer-section">
+            <a href="#" class="footer-logo">
+                <img src="Images/Logo.png" alt="Fusion Dev" style="width: 158px;">
+            </a>
+            <p>Building premium digital experiences with cutting-edge technology and innovative design.</p>
+            <div class="footer-social">
+                <a href="#" title="Twitter">𝕏</a>
+                <a href="#" title="LinkedIn">in</a>
+                <a href="#" title="GitHub">GH</a>
+                <a href="#" title="Facebook">f</a>
+            </div>
+        </div>
+
+        <!-- Product Section -->
+        <div class="footer-section">
+            <h3>Product</h3>
+            <ul class="footer-links">
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Security</a></li>
+                <li><a href="#">Roadmap</a></li>
+            </ul>
+        </div>
+
+        <!-- Company Section -->
+        <div class="footer-section">
+            <h3>Company</h3>
+            <ul class="footer-links">
+                <li><a href="#">About</a></li>
+                <li><a href="https://www.fusiondevconsulting.ai/">Blog</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Resources Section -->
+        <div class="footer-section">
+            <h3>Resources</h3>
+            <ul class="footer-links">
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">API Reference</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <div class="footer-copyright">
+            © 2026 Fusion Dev Consulting. All rights reserved.
+        </div>
+        <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+        </div>
+    </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

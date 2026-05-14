@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Fusion Dev Consulting</title>
+    <link rel="stylesheet" href="style-premium.css">
+    <!-- Add in <head> -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', var(--font-body);
+        }
+    </style>
+    <style>
+        .blog-intro {
+            padding: 80px 5%;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(26,86,219,0.03) 0%, rgba(124,58,237,0.03) 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+            .blog-intro h2 {
+                font-size: 2.4rem;
+                font-weight: 800;
+                margin-bottom: 1rem;
+                line-height: 1.2;
+            }
+
+            .blog-intro p {
+                font-size: 1.1rem;
+                color: var(--muted);
+                max-width: 700px;
+                margin: 0 auto;
+                line-height: 1.8;
+            }
+
+        .blog-controls {
+            padding: 40px 5%;
+            background: var(--bg2);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .category-filter {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .category-btn {
+            background: var(--bg);
+            border: 1.5px solid var(--border);
+            color: var(--text);
+            padding: 0.7rem 1.4rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+            .category-btn:hover,
+            .category-btn.active {
+                background: var(--gradient);
+                color: white;
+                border-color: var(--gradient);
+            }
+
+        .blog-grid {
+            padding: 80px 5%;
+            background: var(--bg);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .article-card {
+            background: var(--bg2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .article-card:hover {
+                transform: translateY(-8px);
+                box-shadow: var(--shadow-lg);
+                border-color: rgba(26,86,219,0.2);
+            }
+
+        .article-image {
+            height: 200px;
+            background: linear-gradient(135deg, rgba(26,86,219,0.1) 0%, rgba(124,58,237,0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .article-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .article-category {
+            display: inline-block;
+            background: rgba(26,86,219,0.08);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .article-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+            flex-grow: 1;
+        }
+
+        .article-excerpt {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.8rem;
+            color: var(--dim);
+        }
+
+        .article-meta-item {
+            display: flex;
+            gap: 0.4rem;
+            align-items: center;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: gap 0.2s ease;
+        }
+
+            .read-more:hover {
+                gap: 0.8rem;
+            }
+
+        .featured-article {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            align-items: center;
+        }
+
+        .featured-image {
+            font-size: 5rem;
+            text-align: center;
+        }
+
+        .featured-content h3 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .featured-content h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .featured-content p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-section {
+            padding: 60px 5%;
+            background: linear-gradient(135deg, rgba(26,86,219,0.05) 0%, rgba(124,58,237,0.05) 100%);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            text-align: center;
+            margin: 80px 5%;
+        }
+
+            .newsletter-section h3 {
+                font-size: 1.6rem;
+                font-weight: 800;
+                margin-bottom: 0.5rem;
+            }
+
+            .newsletter-section p {
+                font-size: 1rem;
+                color: var(--muted);
+                margin-bottom: 1.5rem;
+            }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+            .newsletter-form input {
+                flex-grow: 1;
+                background: var(--bg);
+                border: 1.5px solid var(--border);
+                border-radius: 8px;
+                padding: 0.9rem 1rem;
+                font-size: 0.9rem;
+                outline: none;
+                transition: all 0.2s ease;
+            }
+
+                .newsletter-form input:focus {
+                    border-color: var(--accent);
+                    box-shadow: 0 0 0 3px rgba(26,86,219,0.1);
+                }
+
+            .newsletter-form button {
+                background: var(--gradient);
+                color: white;
+                border: none;
+                padding: 0.9rem 1.8rem;
+                border-radius: 8px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+                .newsletter-form button:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 8px 16px rgba(26,86,219,0.3);
+                }
+
+        @media(max-width:1024px) {
+            .articles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .featured-article {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media(max-width:768px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-controls {
+                flex-direction: column;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><img src="Images/Logo.png" alt="Fusion Dev"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="clients.html">Clients</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+
+<div class="page-hero">
+  <span class="page-hero-label">Blog</span>
+  <h1>Insights on Digital Transformation</h1>
+  <p>Industry trends, best practices, and lessons learned from our engagements. Stay updated on the latest in Microsoft technologies and intelligent automation.</p>
+</div>
+
+<!-- BLOG INTRO -->
+<section class="blog-intro">
+  <h2>Expert Insights & Resources</h2>
+  <p>We share our knowledge and experience through in-depth articles, case studies, and technical guides. Learn from our consultants about the latest in Microsoft 365, Power Platform, and enterprise automation.</p>
+</section>
+
+<!-- FILTERS -->
+<section class="blog-controls">
+  <div class="category-filter">
+    <button class="category-btn active" onclick="filterArticles('all', this)">All Articles</button>
+    <button class="category-btn" onclick="filterArticles('power-platform', this)">Power Platform</button>
+    <button class="category-btn" onclick="filterArticles('sharepoint', this)">SharePoint</button>
+    <button class="category-btn" onclick="filterArticles('rpa', this)">RPA & Automation</button>
+    <button class="category-btn" onclick="filterArticles('ai', this)">AI & Agents</button>
+  </div>
+</section>
+
+<!-- FEATURED ARTICLE -->
+<section class="blog-grid">
+  <div class="container">
+    <div class="featured-article reveal">
+      <div class="featured-image" data-icon="ai"></div>
+      <div class="featured-content">
+        <h3>Featured</h3>
+        <h2>The Complete Guide to AI Agents in Enterprise</h2>
+        <p>Everything you need to know about deploying intelligent agents at scale. From strategy to implementation, we cover best practices, common pitfalls, and real-world examples from Fortune 500 implementations.</p>
+        <a href="#" class="read-more">Read Full Article →</a>
+        <div style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--dim);">
+          5 min read • March 2025
+        </div>
+      </div>
+    </div>
+
+    <!-- ARTICLES GRID -->
+    <h3 style="font-size: 1.3rem; font-weight: 700; margin-top: 3rem; margin-bottom: 2rem;">Latest Articles</h3>
+    <div class="articles-grid">
+
+      <div class="article-card reveal" data-category="power-platform">
+        <div class="article-image" data-icon="automate"></div>
+        <div class="article-content">
+          <span class="article-category">Power Platform</span>
+          <h3 class="article-title">Power Automate Best Practices: Building Scalable Cloud Flows</h3>
+          <p class="article-excerpt">Learn how to design Power Automate flows that scale. We cover error handling, pagination, throttling, and performance optimization strategies.</p>
+          <div class="article-meta">
+            <div class="article-meta-item">March 2025</div>
+            <div class="article-meta-item">8 min read</div>
+          </div>
+          <a href="#" class="read-more" style="margin-top: auto;">Read Article →</a>
+        </div>
+      </div>
+
+      <div class="article-card reveal" data-category="rpa">
+        <div class="article-image" data-icon="migration"></div>
+        <div class="article-content">
+          <span class="article-category">RPA & Automation</span>
+          <h3 class="article-title">UiPath to Power Automate: Migration Checklist</h3>
+          <p class="article-excerpt">Planning an RPA migration? This comprehensive checklist covers assessment, planning, conversion strategy, and decommissioning phases.</p>
+          <div class="article-meta">
+            <div class="article-meta-item">February 2025</div>
+            <div class="article-meta-item">12 min read</div>
+          </div>
+          <a href="#" class="read-more" style="margin-top: auto;">Read Article →</a>
+        </div>
+      </div>
+
+      <div class="article-card reveal" data-category="sharepoint">
+        <div class="article-image" data-icon="sharepoint"></div>
+        <div class="article-content">
+          <span class="article-category">SharePoint</span>
+          <h3 class="article-title">Modern SharePoint Intranet Architecture</h3>
+          <p class="article-excerpt">Design a scalable, maintainable intranet. We explore hub sites, modern pages, search optimization, and governance frameworks.</p>
+          <div class="article-meta">
+            <div class="article-meta-item">February 2025</div>
+            <div class="article-meta-item">10 min read</div>
+          </div>
+          <a href="#" class="read-more" style="margin-top: auto;">Read Article →</a>
+        </div>
+      </div>
+
+      <div class="article-card reveal" data-category="ai">
+        <div class="article-image" data-icon="ai"></div>
+        <div class="article-content">
+          <span class="article-category">AI & Agents</span>
+          <h3 class="article-title">Implementing Retrieval-Augmented Generation (RAG) with Copilot Studio</h3>
+          <p class="article-excerpt">Build intelligent bots that reference your organization's knowledge. Learn about semantic search, embeddings, and enterprise knowledge management.</p>
+          <div class="article-meta">
+            <div class="article-meta-item">January 2025</div>
+            <div class="article-meta-item">9 min read</div>
+          </div>
+          <a href="#" class="read-more" style="margin-top: auto;">Read Article →</a>
+        </div>
+      </div>
+
+      <div class="article-card reveal" data-category="power-platform">
+        <div class="article-image" data-icon="analytics"></div>
+        <div class="article-content">
+          <span class="article-category">Power Platform</span>
+          <h3 class="article-title">Power BI for Process Analytics: Monitoring RPA Performance</h3>
+          <p class="article-excerpt">Visualize and analyze automation performance with Power BI. Build dashboards that track bot health, process metrics, and ROI.</p>
+          <div class="article-meta">
+            <div class="article-meta-item">January 2025</div>
+            <div class="article-meta-item">7 min read</div>
+          </div>
+          <a href="#" class="read-more" style="margin-top: auto;">Read Article →</a>
+        </div>
+      </div>
+
+      <div class="article-card reveal" data-category="sharepoint">
+        <div class="article-image" data-icon="search"></div>
+        <div class="article-content">
+          <span class="article-category">SharePoint</span>
+          <h3 class="article-title">Search Configuration for Enterprise SharePoint: Beyond the Basics</h3>
+          <p class="article-excerpt">Advanced search optimization techniques. Query rules, result blocks, managed properties, and improving discoverability at scale.</p>
+          <div class="article-meta">
+            <div class="article-meta-item">December 2024</div>
+            <div class="article-meta-item">11 min read</div>
+          </div>
+          <a href="#" class="read-more" style="margin-top: auto;">Read Article →</a>
+        </div>
+      </div>
+
+      <div class="article-card reveal" data-category="rpa">
+        <div class="article-image" data-icon="document"></div>
+        <div class="article-content">
+          <span class="article-category">RPA & Automation</span>
+          <h3 class="article-title">OCR and Document Processing with Power Automate</h3>
+          <p class="article-excerpt">Unlock unstructured data. Learn about AI Builder OCR, form processing, and intelligent document extraction patterns.</p>
+          <div class="article-meta">
+            <div class="article-meta-item">December 2024</div>
+            <div class="article-meta-item">8 min read</div>
+          </div>
+          <a href="#" class="read-more" style="margin-top: auto;">Read Article →</a>
+        </div>
+      </div>
+
+      <div class="article-card reveal" data-category="ai">
+        <div class="article-image" data-icon="trust"></div>
+        <div class="article-content">
+          <span class="article-category">AI & Agents</span>
+          <h3 class="article-title">Responsible AI: Ethics & Governance in Enterprise Automation</h3>
+          <p class="article-excerpt">Build trustworthy AI systems. We explore ethical considerations, governance frameworks, and Microsoft's Responsible AI principles.</p>
+          <div class="article-meta">
+            <div class="article-meta-item">November 2024</div>
+            <div class="article-meta-item">10 min read</div>
+          </div>
+          <a href="#" class="read-more" style="margin-top: auto;">Read Article →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section reveal">
+  <h3>Stay Updated</h3>
+  <p>Get the latest insights delivered to your inbox monthly.</p>
+  <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+    <input type="email" placeholder="Enter your email" required>
+    <button type="submit">Subscribe</button>
+  </form>
+</section>
+
+<!-- CTA -->
+<section style="padding: 80px 5%; text-align: center; background: linear-gradient(135deg, rgba(26,86,219,0.03) 0%, rgba(124,58,237,0.03) 100%);">
+  <div class="reveal">
+    <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">Need Expert Guidance?</h2>
+    <p style="font-size: 1.1rem; color: var(--muted); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Our consultants are available to discuss your specific challenges and opportunities. Let's talk.</p>
+    <a href="contact.html" class="btn-primary">Schedule a Consultation →</a>
+  </div>
+</section>
+
+<footer>
+    <div class="footer-container">
+        <!-- Logo Section -->
+        <div class="footer-section">
+            <a href="#" class="footer-logo">
+                <img src="Images/Logo.png" alt="Fusion Dev" style="width: 158px;">
+            </a>
+            <p>Building premium digital experiences with cutting-edge technology and innovative design.</p>
+            <div class="footer-social">
+                <a href="#" title="Twitter">𝕏</a>
+                <a href="#" title="LinkedIn">in</a>
+                <a href="#" title="GitHub">GH</a>
+                <a href="#" title="Facebook">f</a>
+            </div>
+        </div>
+
+        <!-- Product Section -->
+        <div class="footer-section">
+            <h3>Product</h3>
+            <ul class="footer-links">
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Security</a></li>
+                <li><a href="#">Roadmap</a></li>
+            </ul>
+        </div>
+
+        <!-- Company Section -->
+        <div class="footer-section">
+            <h3>Company</h3>
+            <ul class="footer-links">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Resources Section -->
+        <div class="footer-section">
+            <h3>Resources</h3>
+            <ul class="footer-links">
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">API Reference</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <div class="footer-copyright">
+            © 2026 Fusion Dev Consulting. All rights reserved.
+        </div>
+        <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+        </div>
+    </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+function filterArticles(category, selectedButton) {
+  const buttons = document.querySelectorAll('.category-btn');
+  const cards = document.querySelectorAll('[data-category]');
+
+  buttons.forEach(btn => btn.classList.remove('active'));
+  selectedButton.classList.add('active');
+
+  cards.forEach(card => {
+    if (category === 'all' || card.dataset.category === category) {
+      card.style.display = 'flex';
+      card.style.flexDirection = 'column';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+function subscribeNewsletter(e) {
+  e.preventDefault();
+  const email = e.target.querySelector('input[type="email"]').value;
+  alert('Thanks for subscribing! We\'ll send you updates soon.');
+  e.target.reset();
+}
+</script>
+</body>
+</html>

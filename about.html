@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Fusion Dev Consulting</title>
+    <link rel="stylesheet" href="style-premium.css">
+    <!-- Add in <head> -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', var(--font-body);
+        }
+    </style>
+    <style>
+        .about-hero {
+            padding: 80px 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(26,86,219,0.03) 0%, rgba(124,58,237,0.03) 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .about-hero-text h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .about-hero-text p {
+            font-size: 1rem;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .about-hero-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            padding: 60px 5%;
+            background: var(--bg);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .consultants-section {
+            padding: 80px 5%;
+            background: var(--bg2);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .consultants-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .consultant-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+            .consultant-card:hover {
+                transform: translateY(-8px);
+                box-shadow: var(--shadow-lg);
+                border-color: rgba(26,86,219,0.2);
+            }
+
+        .consultant-header {
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(26,86,219,0.05) 0%, rgba(124,58,237,0.05) 100%);
+        }
+
+        .consultant-avatar {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 1.5rem;
+          overflow: hidden;
+          flex-shrink: 0;
+          background: linear-gradient(135deg, #1a56db, #0891b2);
+        }
+
+        .avatar-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          border-radius: 50%;
+        }
+
+        .consultant-header h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .consultant-title {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .consultant-bio {
+            padding: 2rem;
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .expertise-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 1.5rem;
+        }
+
+        .expertise-tag {
+            display: inline-block;
+            background: rgba(26,86,219,0.08);
+            color: var(--accent);
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg2);
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+            .social-link:hover {
+                background: var(--accent);
+                color: white;
+            }
+
+        .values-section {
+            padding: 80px 5%;
+            background: linear-gradient(135deg, rgba(26,86,219,0.03) 0%, rgba(124,58,237,0.03) 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-item {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+            .value-item:hover {
+                transform: translateY(-4px);
+                border-color: rgba(26,86,219,0.2);
+            }
+
+        .value-icon {
+          font-size: 2.5rem;
+          margin-bottom: 1.5rem;
+          color: var(--accent);
+          width: 60px;
+          height: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(26,86,219,0.08);
+          border-radius: 12px;
+          transition: all 0.3s ease;
+        }
+
+        .value-item:hover .value-icon {
+          background: rgba(26,86,219,0.15);
+          transform: scale(1.1);
+          color: var(--accent);
+        }
+
+        .value-item h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.7rem;
+        }
+
+        .value-item p {
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .timeline {
+            padding: 80px 5%;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+            .timeline-item:last-child {
+                border-bottom: none;
+            }
+
+        .timeline-year {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        @media(max-width:1024px) {
+            .about-hero {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .consultants-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media(max-width:768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><img src="Images/Logo.png" alt="Fusion Dev"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="clients.html">Clients</a></li>
+    <li><a href="https://www.fusiondevconsulting.ai/">Blog</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-hero">
+  <span class="page-hero-label">About Us</span>
+  <h1>Building Excellence in Digital Transformation</h1>
+  <p>Two consultants with 30+ years combined expertise in Microsoft technologies, AI, and enterprise automation. We partner with ambitious organizations to achieve more.</p>
+</div>
+
+<!-- ABOUT HERO -->
+<section class="about-hero reveal">
+  <div class="about-hero-text">
+    <h2>Our Story</h2>
+    <p>Fusion Dev Consulting was founded on a simple belief: complex projects don't need complex organizations. We started with deep expertise in Microsoft technologies and a passion for helping companies modernize and automate their operations using AI and intelligent automation.</p>
+    <p>Today, we work with organizations across finance, healthcare, manufacturing, and public sector to deploy cutting-edge solutions that drive real business impact. Our lean team model means direct access to senior consultants — no junior staff, no committees, just results.</p>
+    <p>We call ourselves "Fusion" because we fuse different technologies, methodologies, and ideas into cohesive solutions that actually work.</p>
+  </div>
+  <div class="about-hero-visual reveal" data-icon="cloud"></div>
+</section>
+
+<!-- STATS -->
+<section class="stats-grid">
+  <div class="stat-item reveal">
+    <div class="stat-number">30+</div>
+    <div class="stat-label">Years Combined Expertise</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-number">50+</div>
+    <div class="stat-label">Successful Projects Delivered</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-number">100%</div>
+    <div class="stat-label">Client Satisfaction Rate</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-number">5+</div>
+    <div class="stat-label">Industries Served</div>
+  </div>
+</section>
+
+<!-- CONSULTANTS -->
+<section class="consultants-section">
+  <div class="container">
+    <div class="section-label" style="margin-bottom: 1rem;">Our Team</div>
+    <h2 class="section-title">Meet the Consultants</h2>
+    <div class="consultants-grid">
+
+      <div class="consultant-card reveal">
+        <div class="consultant-header">
+            <div class="consultant-avatar">
+                <img src="Images/Priyan_DP.png" alt="Priyaranjan KS" class="avatar-img">
+            </div>
+
+            <h3>Priyaranjan KS</h3>
+          <div class="consultant-title">Enterprise Architect & AI Lead</div>
+        </div>
+        <div class="consultant-bio">
+            <p>Priyaranjan KS brings 15+ years of experience in Microsoft technologies, specializing in .NET, SharePoint Online, Power Platform, SPFx, Azure, and enterprise cloud solutions. As a Microsoft MVP and MCT, he has delivered scalable business applications, workflow automation platforms, and modern workplace solutions for enterprise clients using Power Apps, Power Automate, C#, .NET, and Microsoft 365 technologies. Passionate about intelligent integrations, cloud-first architecture, and building innovative digital experiences.</p>
+
+            <div class="expertise-list">
+                <span class="expertise-tag">.NET</span>
+                <span class="expertise-tag">C#</span>
+                <span class="expertise-tag">Power Platform</span>
+                <span class="expertise-tag">SharePoint Online</span>
+                <span class="expertise-tag">Azure</span>
+                <span class="expertise-tag">M365</span>
+                <span class="expertise-tag">Integration</span>
+            </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/priyaranjanks" class="social-link">in</a>               
+               
+            </div>
+        </div>
+      </div>
+
+      <div class="consultant-card reveal">
+          <div class="consultant-header">
+              <div class="consultant-avatar">
+                  <img src="Images/Deenu_DP.png" alt="Deenuji Loganathan" class="avatar-img">
+              </div>
+              <h3>Deenuji Loganathan</h3>
+              <div class="consultant-title">Automation & Integration Lead</div>
+          </div>
+        <div class="consultant-bio">
+            <p>Deenuji brings 15+ years of enterprise IT and automation expertise to every engagement. As a Technical Architect specializing in Microsoft Power Platform and RPA, he has successfully delivered large-scale automation solutions, migrated enterprise bots from Blue Prism, UiPath, and Automation Anywhere to Power Automate, and designed intelligent business process solutions for global organizations. Passionate about AI-driven automation, scalable architecture, and digital transformation.</p>
+
+            <div class="expertise-list">
+                <span class="expertise-tag">.NET</span>
+                <span class="expertise-tag">Power Platform</span>
+                <span class="expertise-tag">Power Automate</span>
+                <span class="expertise-tag">RPA</span>
+                <span class="expertise-tag">AI Automation</span>
+                <span class="expertise-tag">Azure DevOps</span>
+                <span class="expertise-tag">Enterprise Architecture</span>
+            </div>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/deenuji/" class="social-link">in</a>
+                
+            </div>
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="container">
+    <div class="section-label" style="margin-bottom: 1rem;">What We Stand For</div>
+    <h2 class="section-title">Our Core Values</h2>
+    <div class="values-grid">
+      <div class="value-item reveal">
+        <div class="value-icon" data-icon="excellence"></div>
+        <h3>Excellence</h3>
+        <p>We deliver nothing less than our best work. Every line of code, every design decision, every recommendation reflects our commitment to excellence.</p>
+      </div>
+
+      <div class="value-item reveal">
+        <div class="value-icon" data-icon="partnership"></div>
+        <h3>Partnership</h3>
+        <p>We're not vendors; we're partners invested in your success. Your wins are our wins, and we're with you every step of the way.</p>
+      </div>
+
+      <div class="value-item reveal">
+        <div class="value-icon" data-icon="innovation"></div>
+        <h3>Innovation</h3>
+        <p>We embrace new technologies, methodologies, and approaches. We stay ahead of the curve so our clients don't get left behind.</p>
+      </div>
+
+      <div class="value-item reveal">
+        <div class="value-icon" data-icon="trust"></div>
+        <h3>Trust</h3>
+        <p>We're transparent about what's possible, what it costs, and how long it takes. No surprises, no overselling — just honest expertise.</p>
+      </div>
+
+      <div class="value-item reveal">
+        <div class="value-icon" data-icon="impact"></div>
+        <h3>Impact</h3>
+        <p>We measure success by real business outcomes — cost savings, productivity gains, risk reduction. Results over activity.</p>
+      </div>
+
+      <div class="value-item reveal">
+        <div class="value-icon" data-icon="growth"></div>
+        <h3>Growth</h3>
+        <p>We invest in our own learning and development, and we help our clients' teams grow. Education and empowerment matter to us.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline">
+  <div class="container">
+    <div class="section-label" style="margin-bottom: 1rem;">Our Journey</div>
+    <h2 class="section-title">How We Got Here</h2>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-year">2010</div>
+      <div class="timeline-content">
+        <h3>Beginning of the Journey</h3>
+        <p>Both founders began specializing in Microsoft technologies at leading consulting firms, building expertise in SharePoint, .Net,  Power Platform, and integration solutions.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-year">2019</div>
+      <div class="timeline-content">
+        <h3>Power Platform Evolution</h3>
+        <p>As Power Platform matured, we recognized the opportunity to help enterprises automate complex processes. Started building deep expertise in Power Automate and RPA migration.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-year">2022</div>
+      <div class="timeline-content">
+        <h3>AI & Agents Focus</h3>
+        <p>With AI emerging as a transformative force, we pivoted to specialize in intelligent agents, Copilot development, and OpenAI integration alongside traditional automation.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-year">2024</div>
+      <div class="timeline-content">
+        <h3>Fusion Dev Founded</h3>
+        <p>Two consultants with 30+ combined years decided to go independent. Founded Fusion Dev to deliver expert, direct consulting without unnecessary overhead.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding: 80px 5%; text-align: center; background: linear-gradient(135deg, rgba(26,86,219,0.03) 0%, rgba(124,58,237,0.03) 100%);">
+  <div class="reveal">
+    <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">Ready to Work Together?</h2>
+    <p style="font-size: 1.1rem; color: var(--muted); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Let's discuss your challenges and how we can help. Schedule a free consultation with our team.</p>
+    <a href="contact.html" class="btn-primary">Get in Touch →</a>
+  </div>
+</section>
+
+<footer>
+    <div class="footer-container">
+        <!-- Logo Section -->
+        <div class="footer-section">
+            <a href="#" class="footer-logo">
+                <img src="Images/Logo.png" alt="Fusion Dev">
+            </a>
+            <p>Building premium digital experiences with cutting-edge technology and innovative design.</p>
+            <div class="footer-social">
+                <a href="#" title="Twitter">𝕏</a>
+                <a href="#" title="LinkedIn">in</a>
+
+            </div>
+        </div>
+
+        <!-- Product Section -->
+        <div class="footer-section">
+            <h3>Product</h3>
+            <ul class="footer-links">
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Security</a></li>
+                <li><a href="#">Roadmap</a></li>
+            </ul>
+        </div>
+
+        <!-- Company Section -->
+        <div class="footer-section">
+            <h3>Company</h3>
+            <ul class="footer-links">
+                <li><a href="#">About</a></li>
+                <li><a href="https://www.fusiondevconsulting.ai/">Blog</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Resources Section -->
+        <div class="footer-section">
+            <h3>Resources</h3>
+            <ul class="footer-links">
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">API Reference</a></li>
+                <li><a href="#">Community</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <div class="footer-copyright">
+            © 2026 Fusion Dev Consulting. All rights reserved.
+        </div>
+        <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+        </div>
+    </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
